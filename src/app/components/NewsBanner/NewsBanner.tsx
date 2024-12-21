@@ -1,6 +1,7 @@
 import { Image } from '@/app/components/Image/Image';
 import styles from './styles.module.css';
 import { formatTimeAgo } from '@/app/helpers/formatTimeAgo';
+import { withSkeleton } from '@/app/helpers/hocs/withSkeleton';
 
 interface NewsBannerProps {
   item: Item;
@@ -26,4 +27,6 @@ const NewsBanner = ({ item }: NewsBannerProps) => {
   );
 };
 
+const NewsBannerWithSkeleton = withSkeleton(NewsBanner, 'banner', 1);
+export default NewsBannerWithSkeleton;
 export { NewsBanner, type NewsBannerProps, type Item };
