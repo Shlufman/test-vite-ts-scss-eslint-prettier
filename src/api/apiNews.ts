@@ -7,12 +7,14 @@ interface IGetNews {
   page_number: number;
   page_size: number;
   category: string | null;
+  keywords: string;
 }
 
 export const getNews = async ({
   page_number = 1,
   page_size = 10,
   category,
+  keywords,
 }: IGetNews) => {
   try {
     const response = await axios.get(`${BASE_URL}search`, {
@@ -21,6 +23,7 @@ export const getNews = async ({
         page_number,
         page_size,
         category,
+        keywords,
       },
     });
     return response.data;
