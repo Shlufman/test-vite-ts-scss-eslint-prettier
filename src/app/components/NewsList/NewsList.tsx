@@ -1,3 +1,4 @@
+import { withSkeleton } from '@/app/helpers/hocs/withSkeleton';
 import { Item } from '../NewsBanner/NewsBanner';
 import { NewsItem } from '../NewsItem/NewsItem';
 import styles from './styles.module.css';
@@ -16,4 +17,6 @@ const NewsList = ({ news }: ImageProps) => {
   );
 };
 
+const NewsListWithSkeleton = withSkeleton(NewsList, 'item', 10);
+export default NewsListWithSkeleton;
 export { NewsList };
