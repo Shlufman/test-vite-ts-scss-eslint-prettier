@@ -3,7 +3,7 @@ import styles from './styles.module.css';
 interface CategoriesProps {
   categories: string[];
   setSelectedCategory: (category: string) => void;
-  selectedCategory: string;
+  selectedCategory: string | null;
 }
 
 const Categories = ({
@@ -12,7 +12,13 @@ const Categories = ({
   selectedCategory,
 }: CategoriesProps) => {
   return (
-    <header className={styles.categories}>
+    <div className={styles.categories}>
+      <button
+        onClick={() => setSelectedCategory(null)}
+        className={!selectedCategory ? styles.active : styles.item}
+      >
+        All
+      </button>
       {categories.map((category) => {
         return (
           <button
@@ -28,7 +34,7 @@ const Categories = ({
           </button>
         );
       })}
-    </header>
+    </div>
   );
 };
 
